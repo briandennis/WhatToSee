@@ -1,0 +1,21 @@
+{
+  "name": "WhatsOut",
+  "homepage": "https://github.com/briandennis/WhatsOut",
+  "authors": [
+    "Brian Dennis <briandennis321@gmail.com>"
+  ],
+  "description": "Don't Worry About It",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.14.5"
+  }
+}

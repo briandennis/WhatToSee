@@ -2,19 +2,72 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var Heading = React.createClass({
-  displayName: 'Heading',
+var PrimaryInfo = React.createClass({
+  displayName: 'PrimaryInfo',
 
   render: function () {
     return React.createElement(
-      'h1',
-      null,
-      'Testing updated gulp watch 2.0 '
+      'p',
+      { id: 'entryPrompt' },
+      'enter a movie you would like to see'
     );
   }
 });
 
-ReactDOM.render(React.createElement(Heading, null), document.getElementById('content'));
+var PrimaryEntry = React.createClass({
+  displayName: 'PrimaryEntry',
+
+  getInitialState: function () {
+    return { needPrompt: true };
+  },
+
+  flipPrompt: function () {
+    this.setState({ needPrompt: !this.state.needPrompt });
+  },
+
+  render: function () {
+
+    return React.createElement(
+      'div',
+      { id: 'primaryEntry' },
+      React.createElement(
+        'form',
+        { action: '#' },
+        React.createElement('input', { type: 'text', name: 'primaryInput', autoComplete: 'off' }),
+        React.createElement(
+          'button',
+          { onClick: this.flipPrompt },
+          ' < '
+        )
+      )
+    );
+  }
+});
+
+var MainContent = React.createClass({
+  displayName: 'MainContent',
+
+  getInitialState: function () {
+    return { initialScreen: true };
+  },
+
+  render: function () {
+    //determine state and pick components accordingly
+    var components;
+    if (this.state.initialScreen) {
+      components = React.createElement(
+        'div',
+        { id: 'initialPrompt' },
+        React.createElement(PrimaryEntry, null),
+        React.createElement(PrimaryInfo, null)
+      );
+    }
+
+    return components;
+  }
+});
+
+ReactDOM.render(React.createElement(MainContent, null), document.getElementById('content'));
 
 },{"react":158,"react-dom":29}],2:[function(require,module,exports){
 (function (process){

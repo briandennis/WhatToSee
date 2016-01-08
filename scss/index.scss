@@ -7,10 +7,57 @@ body{
 }
 #title{
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  img{
+    align-self: center;
+    height: 150px;
+  }
   h1{
     font-family: 'Lato',sans-serif;
     font-size: 3em;
     color: $candy;
+    margin: 0 auto;
   }
+}
+
+#content{
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form{
+    input{
+      background: none;
+      font-size: 2em;
+      border: none;
+      border-bottom: solid 3px white;
+      outline: none;
+      font-family: 'Lato', sans-serif;
+      color: white;
+    }
+    input:focus{
+      border-bottom: solid 3px $candy;
+    }
+    button{
+      background: none;
+      border: none;
+      font-size: 2em;
+      color: $candy;
+      outline: none;
+    }
+    button:hover{
+      color: white;
+    }
+  }
+}
+#entryPrompt{
+    font-size: 1.5em;
+    color: $candy;
+    font-family: 'Lato', sans-serif;
 }

@@ -9,7 +9,8 @@
     "express": "^4.13.3",
     "react": "^0.14.5",
     "react-dom": "^0.14.5",
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "urllib-sync": "^1.1.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

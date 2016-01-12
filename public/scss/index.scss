@@ -57,9 +57,64 @@ body{
   button:hover{
     color: white;
   }
-  p{
+  .message{
     font-size: 1.5em;
     color: $candy;
     font-family: 'Lato', sans-serif;
   }
 }
+
+.movie{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  border: solid 3px $bluebird;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 0px;
+  h2{
+    font-family: 'Lato', sans-serif;
+    color: $bluebird;
+    font-size: 1.5em;
+  }
+  .moviePosterWrapper{
+    //border: solid 2px green;
+    width: 30%;
+    img{
+      display: block;
+      height: 100px;
+      border-radius: 10px;
+      margin: 0 auto;
+    }
+  }
+  .movieInfoWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //border: solid 2px purple;
+    a{
+      text-decoration: none;
+      h2{
+        color: $candy;
+        font-family: 'Lato', sans-serif;
+      }
+    }
+    a:hover{
+      h2{
+        color: white;
+        font-family: 'Lato', sans-serif;
+      }
+    }
+    p{
+      font-family: 'Lato', sans-serif;
+      color: white;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+//copy paste star code

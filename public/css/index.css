@@ -42,7 +42,47 @@ body {
     outline: none; }
   #content button:hover {
     color: white; }
-  #content p {
+  #content .message {
     font-size: 1.5em;
     color: #FF729F;
     font-family: 'Lato', sans-serif; }
+
+.movie {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  border: solid 3px #56CBF9;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 0px; }
+  .movie h2 {
+    font-family: 'Lato', sans-serif;
+    color: #56CBF9;
+    font-size: 1.5em; }
+  .movie .moviePosterWrapper {
+    width: 30%; }
+    .movie .moviePosterWrapper img {
+      display: block;
+      height: 100px;
+      border-radius: 10px;
+      margin: 0 auto; }
+  .movie .movieInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .movie .movieInfoWrapper a {
+      text-decoration: none; }
+      .movie .movieInfoWrapper a h2 {
+        color: #FF729F;
+        font-family: 'Lato', sans-serif; }
+    .movie .movieInfoWrapper a:hover h2 {
+      color: white;
+      font-family: 'Lato', sans-serif; }
+    .movie .movieInfoWrapper p {
+      font-family: 'Lato', sans-serif;
+      color: white;
+      display: block;
+      margin: 0 auto; }

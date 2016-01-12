@@ -5,15 +5,41 @@ var ReactDOM = require('react-dom');
 //------------------------ Begin Components --------------------------------------
 
 
+//Component for displaying movies
+var Movie = React.createClass({
+
+  getDefaultProps: function(){
+    return {
+      movie: {
+        poster: 'http://ia.media-imdb.com/images/M/MV5BMjA1MTc1NTg5NV5BMl5BanBnXkFtZTgwOTM2MDEzNzE@._V1_SX300.jpg',
+        title: 'Testing Eight',
+      }
+    }
+  },
+
+  render: function(){
+    return (
+      <div className='movie'>
+        <div className='moviePosterWrapper'>
+          <img className='poster' src={this.props.movie.poster}></img>
+        </div>
+        <div className='movieInfoWrapper'>
+          <a target='_blank' href={this.props.movie.link}><h2>{this.props.movie.title}</h2></a>
+        </div>
+      </div>
+    );
+  }
+});
+
 //Initial entry of movie and messages
 var PrimaryEntry = React.createClass({
   getInitialState: function(){
-    return {message: 'enter a movie you would like to rate'};
+    return {message: <p className='message'>enter a movie you would like to rate</p>};
   },
 
   getMovie: function(){
     //variables needed
-    var errorMessage = 'Please enter a valid movie title!';
+    var errorMessage = <p className='message'>Please enter a valid movie title!</p>;
 
     //function for getting movie object
     var getMovie = function(name){
@@ -36,7 +62,8 @@ var PrimaryEntry = React.createClass({
       //get movies
       var response = getMovie(movieTitle);
       var displayMessage = errorMessage;
-      console.log('Response: ' + response.movies[0].title);
+      console.log('Response: ' + response.movies[0].poster);
+      displayMessage = <Movie movie={response.movies[0]} />;
 
       //set message
       this.setState({message: displayMessage});
@@ -52,7 +79,7 @@ var PrimaryEntry = React.createClass({
       <div id='primaryEntry'>
         <input type='text' id='mainEntry' autoComplete='off'></input>
         <button onClick={this.getMovie}> &lt; </button>
-        <p>{this.state.message}</p>
+        {this.state.message}
       </div>
     );
   }

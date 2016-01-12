@@ -18932,17 +18932,64 @@ var ReactDOM = require('react-dom');
 
 //------------------------ Begin Components --------------------------------------
 
+//Component for displaying movies
+var Movie = React.createClass({
+  displayName: 'Movie',
+
+  getDefaultProps: function () {
+    return {
+      movie: {
+        poster: 'http://ia.media-imdb.com/images/M/MV5BMjA1MTc1NTg5NV5BMl5BanBnXkFtZTgwOTM2MDEzNzE@._V1_SX300.jpg',
+        title: 'Testing Eight'
+      }
+    };
+  },
+
+  render: function () {
+    return React.createElement(
+      'div',
+      { className: 'movie' },
+      React.createElement(
+        'div',
+        { className: 'moviePosterWrapper' },
+        React.createElement('img', { className: 'poster', src: this.props.movie.poster })
+      ),
+      React.createElement(
+        'div',
+        { className: 'movieInfoWrapper' },
+        React.createElement(
+          'a',
+          { target: '_blank', href: this.props.movie.link },
+          React.createElement(
+            'h2',
+            null,
+            this.props.movie.title
+          )
+        )
+      )
+    );
+  }
+});
+
 //Initial entry of movie and messages
 var PrimaryEntry = React.createClass({
   displayName: 'PrimaryEntry',
 
   getInitialState: function () {
-    return { message: 'enter a movie you would like to rate' };
+    return { message: React.createElement(
+        'p',
+        { className: 'message' },
+        'enter a movie you would like to rate'
+      ) };
   },
 
   getMovie: function () {
     //variables needed
-    var errorMessage = 'Please enter a valid movie title!';
+    var errorMessage = React.createElement(
+      'p',
+      { className: 'message' },
+      'Please enter a valid movie title!'
+    );
 
     //function for getting movie object
     var getMovie = function (name) {
@@ -18965,7 +19012,8 @@ var PrimaryEntry = React.createClass({
       //get movies
       var response = getMovie(movieTitle);
       var displayMessage = errorMessage;
-      console.log('Response: ' + response.movies[0].title);
+      console.log('Response: ' + response.movies[0].poster);
+      displayMessage = React.createElement(Movie, { movie: response.movies[0] });
 
       //set message
       this.setState({ message: displayMessage });
@@ -18985,11 +19033,7 @@ var PrimaryEntry = React.createClass({
         { onClick: this.getMovie },
         ' < '
       ),
-      React.createElement(
-        'p',
-        null,
-        this.state.message
-      )
+      this.state.message
     );
   }
 });

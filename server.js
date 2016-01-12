@@ -3,7 +3,7 @@ var express = require('express');
 var url = require('url');
 var request = require('request');
 var path = require('path');
-var http = require('http');
+var syncRequest = require('urllib-sync').request;
 
 //initiate express
 var app = express();
@@ -47,10 +47,18 @@ app.get('/api/',function(req, res){
         curr.runtime = movie.runtime;
         curr.criticRating = movie.ratings.critics_score;
         curr.peopleRating = movie.ratings.audience_score;
-        curr.poster = movie.posters.thumbnail;
 
         //get imdb info
-
+        if (movie.alternate_ids.imdb){
+          var imdbUrl = 'http://www.omdbapi.com/?i=tt' + movie.alternate_ids.imdb;
+          var imdbResponse = JSON.parse(syncRequest(imdbUrl).data);
+          curr.link = 'http://www.imdb.com/title/tt' + movie.alternate_ids.imdb;
+          curr.imdbRating = imdbResponse.imdbRating;
+          curr.metascore = imdbResponse.Metascore;
+          curr.poster = imdbResponse.Poster;
+          curr.director = imdbResponse.Director;
+          curr.actors = imdbResponse.Actors;
+        }
 
         //put movie object in return object
         returnObject.movies.push(curr);

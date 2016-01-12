@@ -2,6 +2,7 @@ body {
   background: #81F4E1; }
 
 #title {
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center; }
@@ -23,7 +24,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
-  #content form input {
+  #content input {
     background: none;
     font-size: 2em;
     border: none;
@@ -31,18 +32,17 @@ body {
     outline: none;
     font-family: 'Lato', sans-serif;
     color: white; }
-  #content form input:focus {
+  #content input:focus {
     border-bottom: solid 3px #FF729F; }
-  #content form button {
+  #content button {
     background: none;
     border: none;
     font-size: 2em;
     color: #FF729F;
     outline: none; }
-  #content form button:hover {
+  #content button:hover {
     color: white; }
-
-#entryPrompt {
-  font-size: 1.5em;
-  color: #FF729F;
-  font-family: 'Lato', sans-serif; }
+  #content p {
+    font-size: 1.5em;
+    color: #FF729F;
+    font-family: 'Lato', sans-serif; }

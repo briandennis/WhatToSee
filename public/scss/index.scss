@@ -5,7 +5,10 @@ $candy: #FF729F;
 body{
   background: $mint;
 }
+
+//Main Title Header and Logo
 #title{
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,38 +29,37 @@ body{
   }
 }
 
+//Main div for React insertion
 #content{
   margin-top: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
-  form{
-    input{
-      background: none;
-      font-size: 2em;
-      border: none;
-      border-bottom: solid 3px white;
-      outline: none;
-      font-family: 'Lato', sans-serif;
-      color: white;
-    }
-    input:focus{
-      border-bottom: solid 3px $candy;
-    }
-    button{
-      background: none;
-      border: none;
-      font-size: 2em;
-      color: $candy;
-      outline: none;
-    }
-    button:hover{
-      color: white;
-    }
+  input{
+    background: none;
+    font-size: 2em;
+    border: none;
+    border-bottom: solid 3px white;
+    outline: none;
+    font-family: 'Lato', sans-serif;
+    color: white;
   }
-}
-#entryPrompt{
+  input:focus{
+    border-bottom: solid 3px $candy;
+  }
+  button{
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: $candy;
+    outline: none;
+  }
+  button:hover{
+    color: white;
+  }
+  p{
     font-size: 1.5em;
     color: $candy;
     font-family: 'Lato', sans-serif;
+  }
 }

@@ -19341,7 +19341,11 @@ var Movie = React.createClass({
             shortTitle
           )
         ),
-        React.createElement(Rating, { empty: React.createElement(EmptyStar, null), full: React.createElement(FilledStar, null) })
+        React.createElement(
+          'div',
+          { className: 'rating' },
+          React.createElement(Rating, { className: 'rating', empty: React.createElement(EmptyStar, null), full: React.createElement(FilledStar, null) })
+        )
       )
     );
   }

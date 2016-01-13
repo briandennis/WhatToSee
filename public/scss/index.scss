@@ -83,11 +83,6 @@ body{
   border-radius: 20px;
   margin-top: 20px;
   padding: 0px;
-  h2{
-    font-family: 'Lato', sans-serif;
-    color: $bluebird;
-    font-size: 1.5em;
-  }
   .moviePosterWrapper{
     height: 80%;
     width: 40%;
@@ -104,10 +99,9 @@ body{
     //border: solid 4px purple;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     a{
-      display: block;
       text-decoration: none;
       //margin-bottom: -15px;
       h2.normal{
@@ -135,11 +129,11 @@ body{
       display: block;
       margin: 0 auto;
     }
+    .rating{
+      //border: solid 4px orange;
+      margin-bottom: 10%;
+    }
   }
-}
-
-.rating{
-  border: solid 4px orange;
 }
 
 .emptyStar{

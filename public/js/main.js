@@ -61,7 +61,9 @@ var Movie = React.createClass({
         </div>
         <div className='movieInfoWrapper'>
           <a target='_blank' href={this.props.movie.link}><h2 className={titleFont}>{shortTitle}</h2></a>
-          <Rating empty={<EmptyStar />} full={<FilledStar />} />
+          <div className='rating'>
+            <Rating className='rating' empty={<EmptyStar />} full={<FilledStar />} />
+          </div>
         </div>
       </div>
     );

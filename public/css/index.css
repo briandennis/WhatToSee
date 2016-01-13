@@ -63,10 +63,6 @@ body {
   border-radius: 20px;
   margin-top: 20px;
   padding: 0px; }
-  .movie h2 {
-    font-family: 'Lato', sans-serif;
-    color: #56CBF9;
-    font-size: 1.5em; }
   .movie .moviePosterWrapper {
     height: 80%;
     width: 40%; }
@@ -80,10 +76,9 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center; }
     .movie .movieInfoWrapper a {
-      display: block;
       text-decoration: none; }
       .movie .movieInfoWrapper a h2.normal {
         color: #FF729F;
@@ -102,9 +97,8 @@ body {
       color: white;
       display: block;
       margin: 0 auto; }
-
-.rating {
-  border: solid 4px orange; }
+    .movie .movieInfoWrapper .rating {
+      margin-bottom: 10%; }
 
 .emptyStar {
   font-size: 2em;

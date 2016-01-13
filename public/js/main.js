@@ -1,35 +1,27 @@
 //Dependancies
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Rating = require('react-rating');
 
 //------------------------ Begin Components --------------------------------------
 
-//Component for rating system
-var Stars = React.createClass({
-
-  ratingUpdate: function(){
-    console.log("rating is: " + this.value);
-  },
-
+//Component for empty rating star
+var EmptyStar = React.createClass({
   render: function(){
-      return (
-        <div className='stars'>
-          <span className="star-rating">
-            <input type="radio" name="rating" value="1" onClick={this.ratingUpdate}></input>
-            <i></i>
-            <input type="radio" name="rating" value="2"></input>
-            <i></i>
-            <input type="radio" name="rating" value="3"></input>
-            <i></i>
-            <input type="radio" name="rating" value="4"></input>
-            <i></i>
-            <input type="radio" name="rating" value="5"></input>
-            <i></i>
-          </span>
-        </div>
-      );
+    return (
+      <i className='fa fa-star emptyStar'></i>
+    );
   }
-});
+})
+
+//Component for filled rating star
+var FilledStar = React.createClass({
+  render: function(){
+    return (
+      <i className='fa fa-star filledStar'></i>
+    );
+  }
+})
 
 //Component for displaying movies
 var Movie = React.createClass({
@@ -69,7 +61,7 @@ var Movie = React.createClass({
         </div>
         <div className='movieInfoWrapper'>
           <a target='_blank' href={this.props.movie.link}><h2 className={titleFont}>{shortTitle}</h2></a>
-          <Stars updateFunction={this.rateMovie} />
+          <Rating empty={<EmptyStar />} full={<FilledStar />} />
         </div>
       </div>
     );

@@ -9,6 +9,7 @@
     "express": "^4.13.3",
     "react": "^0.14.5",
     "react-dom": "^0.14.5",
+    "react-rating": "^0.1.0",
     "request": "^2.67.0",
     "urllib-sync": "^1.1.2"
   },

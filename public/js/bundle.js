@@ -18932,6 +18932,32 @@ var ReactDOM = require('react-dom');
 
 //------------------------ Begin Components --------------------------------------
 
+//Component for rating system
+var Stars = React.createClass({
+  displayName: 'Stars',
+
+  render: function () {
+    return React.createElement(
+      'div',
+      { className: 'stars' },
+      React.createElement(
+        'span',
+        { className: 'star-rating' },
+        React.createElement('input', { type: 'radio', name: 'rating', value: '1' }),
+        React.createElement('i', null),
+        React.createElement('input', { type: 'radio', name: 'rating', value: '2' }),
+        React.createElement('i', null),
+        React.createElement('input', { type: 'radio', name: 'rating', value: '3' }),
+        React.createElement('i', null),
+        React.createElement('input', { type: 'radio', name: 'rating', value: '4' }),
+        React.createElement('i', null),
+        React.createElement('input', { type: 'radio', name: 'rating', value: '5' }),
+        React.createElement('i', null)
+      )
+    );
+  }
+});
+
 //Component for displaying movies
 var Movie = React.createClass({
   displayName: 'Movie',
@@ -18965,7 +18991,8 @@ var Movie = React.createClass({
             null,
             this.props.movie.title
           )
-        )
+        ),
+        React.createElement(Stars, null)
       )
     );
   }
@@ -19013,7 +19040,16 @@ var PrimaryEntry = React.createClass({
       var response = getMovie(movieTitle);
       var displayMessage = errorMessage;
       console.log('Response: ' + response.movies[0].poster);
-      displayMessage = React.createElement(Movie, { movie: response.movies[0] });
+      displayMessage = React.createElement(
+        'div',
+        { className: 'moviePreview' },
+        React.createElement(Movie, { movie: response.movies[0] }),
+        React.createElement(
+          'p',
+          { className: 'message' },
+          'Awesome, now give it a rating! Or try another search'
+        )
+      );
 
       //set message
       this.setState({ message: displayMessage });
@@ -19027,11 +19063,15 @@ var PrimaryEntry = React.createClass({
     return React.createElement(
       'div',
       { id: 'primaryEntry' },
-      React.createElement('input', { type: 'text', id: 'mainEntry', autoComplete: 'off' }),
       React.createElement(
-        'button',
-        { onClick: this.getMovie },
-        ' < '
+        'div',
+        { className: 'movieInput' },
+        React.createElement('input', { type: 'text', id: 'mainEntry', autoComplete: 'off' }),
+        React.createElement(
+          'button',
+          { onClick: this.getMovie },
+          ' < '
+        )
       ),
       this.state.message
     );

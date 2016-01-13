@@ -24,24 +24,29 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
-  #content input {
-    background: none;
-    font-size: 2em;
-    border: none;
-    border-bottom: solid 3px white;
-    outline: none;
-    font-family: 'Lato', sans-serif;
-    color: white; }
-  #content input:focus {
-    border-bottom: solid 3px #FF729F; }
-  #content button {
-    background: none;
-    border: none;
-    font-size: 2em;
-    color: #FF729F;
-    outline: none; }
-  #content button:hover {
-    color: white; }
+  #content .movieInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    #content .movieInput input {
+      background: none;
+      font-size: 2em;
+      border: none;
+      border-bottom: solid 3px white;
+      outline: none;
+      font-family: 'Lato', sans-serif;
+      color: white; }
+    #content .movieInput input:focus {
+      border-bottom: solid 3px #FF729F; }
+    #content .movieInput button {
+      background: none;
+      border: none;
+      font-size: 2em;
+      color: #FF729F;
+      outline: none; }
+    #content .movieInput button:hover {
+      color: white; }
   #content .message {
     font-size: 1.5em;
     color: #FF729F;
@@ -52,8 +57,9 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 20vh;
-  border: solid 3px #56CBF9;
+  height: 15vh;
+  border: solid 5px #FF729F;
+  background: #56CBF9;
   border-radius: 20px;
   margin-top: 20px;
   padding: 0px; }
@@ -62,21 +68,27 @@ body {
     color: #56CBF9;
     font-size: 1.5em; }
   .movie .moviePosterWrapper {
-    width: 30%; }
+    height: 80%;
+    width: 40%; }
     .movie .moviePosterWrapper img {
       display: block;
-      height: 100px;
+      height: 100%;
       border-radius: 10px;
       margin: 0 auto; }
   .movie .movieInfoWrapper {
+    width: 60%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; }
     .movie .movieInfoWrapper a {
-      text-decoration: none; }
+      display: block;
+      text-decoration: none;
+      margin-bottom: -15px; }
       .movie .movieInfoWrapper a h2 {
         color: #FF729F;
+        font-size: 2em;
         font-family: 'Lato', sans-serif; }
     .movie .movieInfoWrapper a:hover h2 {
       color: white;
@@ -86,3 +98,68 @@ body {
       color: white;
       display: block;
       margin: 0 auto; }
+
+.stars {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-size: .5em; }
+
+.star-rating {
+  font-size: 0;
+  white-space: nowrap;
+  display: inline-block;
+  width: 250px;
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  background: url('data:image/svg+xml;utf-8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"><polygon fill="#4FB9E3" points="10,0 13.09,6.583 20,7.639 15,12.764 16.18,20 10,16.583 3.82,20 5,12.764 0,7.639 6.91,6.583 "/></svg>');
+  background-size: contain; }
+
+.star-rating i {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 20%;
+  z-index: 1;
+  background: url('data:image/svg+xml;utf-8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"><polygon fill="#FFDF88" points="10,0 13.09,6.583 20,7.639 15,12.764 16.18,20 10,16.583 3.82,20 5,12.764 0,7.639 6.91,6.583 "/></svg>');
+  background-size: contain; }
+
+.star-rating input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  opacity: 0;
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  position: relative; }
+
+.star-rating input:hover + i,
+.star-rating input:checked + i {
+  opacity: 1; }
+
+.star-rating i ~ i {
+  width: 40%; }
+
+.star-rating i ~ i ~ i {
+  width: 60%; }
+
+.star-rating i ~ i ~ i ~ i {
+  width: 80%; }
+
+.star-rating i ~ i ~ i ~ i ~ i {
+  width: 100%; }
+
+.choice {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 20px;
+  display: block; }

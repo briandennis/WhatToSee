@@ -2,7 +2,7 @@
   "name": "whatsout",
   "version": "1.0.0",
   "description": "Don't worry about it",
-  "main": "main.js",
+  "main": "server.js",
   "dependencies": {
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.2.0",

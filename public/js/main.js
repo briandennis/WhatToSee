@@ -4,6 +4,27 @@ var ReactDOM = require('react-dom');
 
 //------------------------ Begin Components --------------------------------------
 
+//Component for rating system
+var Stars = React.createClass({
+  render: function(){
+      return (
+        <div className='stars'>
+          <span className="star-rating">
+            <input type="radio" name="rating" value="1"></input>
+            <i></i>
+            <input type="radio" name="rating" value="2"></input>
+            <i></i>
+            <input type="radio" name="rating" value="3"></input>
+            <i></i>
+            <input type="radio" name="rating" value="4"></input>
+            <i></i>
+            <input type="radio" name="rating" value="5"></input>
+            <i></i>
+          </span>
+        </div>
+      );
+  }
+});
 
 //Component for displaying movies
 var Movie = React.createClass({
@@ -25,6 +46,7 @@ var Movie = React.createClass({
         </div>
         <div className='movieInfoWrapper'>
           <a target='_blank' href={this.props.movie.link}><h2>{this.props.movie.title}</h2></a>
+          <Stars />
         </div>
       </div>
     );
@@ -63,7 +85,12 @@ var PrimaryEntry = React.createClass({
       var response = getMovie(movieTitle);
       var displayMessage = errorMessage;
       console.log('Response: ' + response.movies[0].poster);
-      displayMessage = <Movie movie={response.movies[0]} />;
+      displayMessage = (
+        <div className='moviePreview'>
+          <Movie movie={response.movies[0]} />
+          <p className='message'>Awesome, now give it a rating! Or try another search</p>
+        </div>
+      );
 
       //set message
       this.setState({message: displayMessage});
@@ -77,8 +104,10 @@ var PrimaryEntry = React.createClass({
 
     return(
       <div id='primaryEntry'>
-        <input type='text' id='mainEntry' autoComplete='off'></input>
-        <button onClick={this.getMovie}> &lt; </button>
+        <div className='movieInput'>
+          <input type='text' id='mainEntry' autoComplete='off'></input>
+          <button onClick={this.getMovie}> &lt; </button>
+        </div>
         {this.state.message}
       </div>
     );

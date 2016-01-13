@@ -76,7 +76,7 @@ body{
   align-items: center;
   justify-content: center;
   height: 15vh;
-  border: solid 5px $candy;
+  border: solid 3px $candy;
   background: $bluebird;
   border-radius: 20px;
   margin-top: 20px;
@@ -108,11 +108,17 @@ body{
       display: block;
       text-decoration: none;
       margin-bottom: -15px;
-      h2{
+      h2.normal{
         color: $candy;
         font-size: 2em;
         font-family: 'Lato', sans-serif;
         //border: solid 2px green;
+      }
+      h2.smallFont{
+        color: $candy;
+        font-size: 1.2em;
+        padding-bottom: 10px;
+        font-family: 'Lato', sans-serif;
       }
     }
     a:hover{
@@ -137,8 +143,6 @@ body{
   font-size: .5em;
   //border: solid 2px red;
 }
-
-
 
 
 //copy paste star code

@@ -6,11 +6,16 @@ var ReactDOM = require('react-dom');
 
 //Component for rating system
 var Stars = React.createClass({
+
+  ratingUpdate: function(){
+    console.log("rating is: " + this.value);
+  },
+
   render: function(){
       return (
         <div className='stars'>
           <span className="star-rating">
-            <input type="radio" name="rating" value="1"></input>
+            <input type="radio" name="rating" value="1" onClick={this.ratingUpdate}></input>
             <i></i>
             <input type="radio" name="rating" value="2"></input>
             <i></i>
@@ -38,18 +43,37 @@ var Movie = React.createClass({
     }
   },
 
+  rateMovie: function(rating){
+    if(rating){
+      if([1,2,3,4,5].contains(rating)){
+        this.props.movie.rating = rating;
+        console.log(rating);
+      }
+    }
+  },
+
   render: function(){
+    var titleFont = 'normal';
+    var shortTitle = this.props.movie.title;
+    if(shortTitle.length > 15){
+      titleFont = 'smallFont';
+      if(shortTitle.length > 25){
+        shortTitle = shortTitle.substring(0,22) + '...';
+      }
+    }
+
     return (
       <div className='movie'>
         <div className='moviePosterWrapper'>
           <img className='poster' src={this.props.movie.poster}></img>
         </div>
         <div className='movieInfoWrapper'>
-          <a target='_blank' href={this.props.movie.link}><h2>{this.props.movie.title}</h2></a>
-          <Stars />
+          <a target='_blank' href={this.props.movie.link}><h2 className={titleFont}>{shortTitle}</h2></a>
+          <Stars updateFunction={this.rateMovie} />
         </div>
       </div>
     );
+
   }
 });
 

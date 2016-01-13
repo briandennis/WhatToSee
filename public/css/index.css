@@ -58,7 +58,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 15vh;
-  border: solid 5px #FF729F;
+  border: solid 3px #FF729F;
   background: #56CBF9;
   border-radius: 20px;
   margin-top: 20px;
@@ -86,9 +86,14 @@ body {
       display: block;
       text-decoration: none;
       margin-bottom: -15px; }
-      .movie .movieInfoWrapper a h2 {
+      .movie .movieInfoWrapper a h2.normal {
         color: #FF729F;
         font-size: 2em;
+        font-family: 'Lato', sans-serif; }
+      .movie .movieInfoWrapper a h2.smallFont {
+        color: #FF729F;
+        font-size: 1.2em;
+        padding-bottom: 10px;
         font-family: 'Lato', sans-serif; }
     .movie .movieInfoWrapper a:hover h2 {
       color: white;

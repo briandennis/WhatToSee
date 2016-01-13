@@ -18936,6 +18936,10 @@ var ReactDOM = require('react-dom');
 var Stars = React.createClass({
   displayName: 'Stars',
 
+  ratingUpdate: function () {
+    console.log("rating is: " + this.value);
+  },
+
   render: function () {
     return React.createElement(
       'div',
@@ -18943,7 +18947,7 @@ var Stars = React.createClass({
       React.createElement(
         'span',
         { className: 'star-rating' },
-        React.createElement('input', { type: 'radio', name: 'rating', value: '1' }),
+        React.createElement('input', { type: 'radio', name: 'rating', value: '1', onClick: this.ratingUpdate }),
         React.createElement('i', null),
         React.createElement('input', { type: 'radio', name: 'rating', value: '2' }),
         React.createElement('i', null),
@@ -18971,7 +18975,25 @@ var Movie = React.createClass({
     };
   },
 
+  rateMovie: function (rating) {
+    if (rating) {
+      if ([1, 2, 3, 4, 5].contains(rating)) {
+        this.props.movie.rating = rating;
+        console.log(rating);
+      }
+    }
+  },
+
   render: function () {
+    var titleFont = 'normal';
+    var shortTitle = this.props.movie.title;
+    if (shortTitle.length > 15) {
+      titleFont = 'smallFont';
+      if (shortTitle.length > 25) {
+        shortTitle = shortTitle.substring(0, 22) + '...';
+      }
+    }
+
     return React.createElement(
       'div',
       { className: 'movie' },
@@ -18988,11 +19010,11 @@ var Movie = React.createClass({
           { target: '_blank', href: this.props.movie.link },
           React.createElement(
             'h2',
-            null,
-            this.props.movie.title
+            { className: titleFont },
+            shortTitle
           )
         ),
-        React.createElement(Stars, null)
+        React.createElement(Stars, { updateFunction: this.rateMovie })
       )
     );
   }

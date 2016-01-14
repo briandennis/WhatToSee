@@ -158,7 +158,6 @@ body{
 .ratedMovies{
   width: 45vw;
   height: 100vh;
-  border: solid 2px green;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -167,15 +166,24 @@ body{
   h2{
     color: $candy;
     font-family: 'Lato', sans-serif;
+    padding-bottom: 20px;
   }
 
   .movieList{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .movieListItem{
       background: $bluebird;
       border: solid 2px $candy;
-      padding-left: 0px;
-      margin-left: 0px;
+      border-radius: 10px;
+      margin-right: 10px;
+      color: $candy;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.2em;
+      width: 30vw;
     }
 
   }
@@ -184,7 +192,6 @@ body{
 .movieEntry{
   width: 45vw;
   height: 100vh;
-  border: solid 2px orange;
 }
 
 
@@ -198,4 +205,10 @@ body{
 .filledStar{
   font-size: 2em;
   color: $filled;
+}
+#primaryEntry{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

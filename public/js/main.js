@@ -77,19 +77,23 @@ var PrimaryEntry = React.createClass({
   getInitialState: function(){
     return {
       message: <p className='message'>enter a movie you would like to rate</p>,
+      emptyString: ""
     };
   },
 
   recieveRating: function(movie){
+    this.setState({message: <p className='message'>enter a movie you would like to rate</p>});
     this.props.returnFunction([movie]);
   },
 
   getMovie: function(){
+
     //variables needed
     var errorMessage = <p className='message'>Please enter a valid movie title!</p>;
 
     //function for getting movie object
     var getMovie = function(name){
+
       //format URL
       var movieUrl = 'http://localhost:3000/api?movie=' + name ;
 
@@ -119,6 +123,7 @@ var PrimaryEntry = React.createClass({
 
       //set message
       this.setState({message: displayMessage});
+      this.refs.mainInput.value = '';
     }
     else{
       this.setState({message: errorMessage});
@@ -130,7 +135,7 @@ var PrimaryEntry = React.createClass({
     return(
       <div id='primaryEntry'>
         <div className='movieInput'>
-          <input type='text' id='mainEntry' autoComplete='off'></input>
+          <input ref='mainInput' type='text' id='mainEntry' autoComplete='off' defaultValu=''></input>
           <button onClick={this.getMovie}> &lt; </button>
         </div>
         {this.state.message}
@@ -142,16 +147,19 @@ var PrimaryEntry = React.createClass({
 //Movie list component, holder for all movies
 var MovieList = React.createClass({
 
-  getDefaultProps: function(){
-    movies: []
-  },
-
   render: function(){
+
+    var movieItems = [];
+    for(var i = 0; i < this.props.movies.length; i++){
+        movieItems.push(<MovieListItem key={i} movie={this.props.movies[i]} />);
+    }
+
+
     return (
       <div className='movieList'>
-        <ul className='listGroup'>
-          <MovieListItem />
-        </ul>
+        <div className='listGroup'>
+          {movieItems}
+        </div>
       </div>
     );
   }
@@ -164,9 +172,14 @@ var MovieListItem = React.createClass({
   render: function(){
 
     return (
-      <li className='list-group-item movieListItem'>
-        This is a test list item!
-      </li>
+      <div className='list-group-item movieListItem'>
+        <div className='movieTitle'>
+          {this.props.movie.title}
+        </div>
+        <div className='movieRating'>
+          <Rating className='rating' empty={<EmptyStar />} full={<FilledStar />} readonly={true} initialRate={this.props.movie.rating} />
+        </div>
+      </div>
     );
   }
 });
@@ -176,7 +189,7 @@ var MovieListItem = React.createClass({
 var MainContent = React.createClass({
 
   getInitialState: function(){
-    return {progression: 0};
+    return {progression: 0, movieCount: 0};
   },
 
   getDefaultProps: function(){
@@ -186,12 +199,22 @@ var MainContent = React.createClass({
   },
 
   updateProgression: function(movies){
-      console.log("Movies Value: " + movies);
       if(this.state.progression === 0){
-        if(movies.length = 1){
+        if(movies.length == 1){
           this.props.movies.push(movies[0]);
           console.log("Added First Movie: " + movies[0].title);
-          this.setState({progression: 1});
+          this.setState({progression: 1, movieCount: this.state.movieCount++});
+        }
+      }
+      else if(this.state.progression === 1){
+        if(movies.length == 1){
+          this.props.movies.push(movies[0]);
+          this.setState({movieCount: this.state.movieCount++});
+          this.props.uniqueId++;
+          console.log("Additional Movie Added: " + movies[0].title);
+          if(this.props.movies.length >= 5){
+            this.setState({progression: 2});
+          }
         }
       }
   },
@@ -223,26 +246,48 @@ var MainContent = React.createClass({
           </div>
       );
     }
-    if(this.state.progression === 1){
+    else if(this.state.progression === 1){
+
+      console.log("Progression 1 Entered, Movies is equal to: " + this.props.movies);
+
       components = (
         <div className='container-fluid'>
           <div className='row' id='additionalEntry'>
-            <div className='col-md-6'>
+            <div className='col-sm-6'>
               <div className='ratedMovies'>
                 <div id='ratedMoviesTitle'>
                   <h2>Rated Movies</h2>
-                  <MovieList />
                 </div>
+                <MovieList movies={this.props.movies} />
               </div>
             </div>
-            <div className='col-md-6'>
+            <div className='col-sm-6'>
               <div className='movieEntry'>
-                <h1>This is where the entry will be!</h1>
+                <div className='container-fluid'>
+                  <div className='row' id='title'>
+                    <div className='col-md-12'>
+                      <div>
+                        <img src='images/logo.png'></img>
+                        <h1>What to See?</h1>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='row' id='entryField'>
+                    <div className='col-md-12'>
+                      <div id='initialPrompt'>
+                        <PrimaryEntry returnFunction={this.updateProgression} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       );
+    }
+    else if(this.state.progression === 2){
+      components = (<h1>OMG FINAL STATE!!!</h1>);
     }
 
     return components;

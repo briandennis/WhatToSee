@@ -115,24 +115,32 @@ body {
 .ratedMovies {
   width: 45vw;
   height: 100vh;
-  border: solid 2px green;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; }
   .ratedMovies h2 {
     color: #FF729F;
-    font-family: 'Lato', sans-serif; }
-  .ratedMovies .movieList .movieListItem {
-    background: #56CBF9;
-    border: solid 2px #FF729F;
-    padding-left: 0px;
-    margin-left: 0px; }
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 20px; }
+  .ratedMovies .movieList {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .ratedMovies .movieList .movieListItem {
+      background: #56CBF9;
+      border: solid 2px #FF729F;
+      border-radius: 10px;
+      margin-right: 10px;
+      color: #FF729F;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.2em;
+      width: 30vw; }
 
 .movieEntry {
   width: 45vw;
-  height: 100vh;
-  border: solid 2px orange; }
+  height: 100vh; }
 
 .emptyStar {
   font-size: 2em;
@@ -141,3 +149,9 @@ body {
 .filledStar {
   font-size: 2em;
   color: #FFDF88; }
+
+#primaryEntry {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }

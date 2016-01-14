@@ -19362,15 +19362,22 @@ var PrimaryEntry = React.createClass({
         'p',
         { className: 'message' },
         'enter a movie you would like to rate'
-      )
+      ),
+      emptyString: ""
     };
   },
 
   recieveRating: function (movie) {
+    this.setState({ message: React.createElement(
+        'p',
+        { className: 'message' },
+        'enter a movie you would like to rate'
+      ) });
     this.props.returnFunction([movie]);
   },
 
   getMovie: function () {
+
     //variables needed
     var errorMessage = React.createElement(
       'p',
@@ -19380,6 +19387,7 @@ var PrimaryEntry = React.createClass({
 
     //function for getting movie object
     var getMovie = function (name) {
+
       //format URL
       var movieUrl = 'http://localhost:3000/api?movie=' + name;
 
@@ -19413,6 +19421,7 @@ var PrimaryEntry = React.createClass({
 
       //set message
       this.setState({ message: displayMessage });
+      this.refs.mainInput.value = '';
     } else {
       this.setState({ message: errorMessage });
     }
@@ -19426,7 +19435,7 @@ var PrimaryEntry = React.createClass({
       React.createElement(
         'div',
         { className: 'movieInput' },
-        React.createElement('input', { type: 'text', id: 'mainEntry', autoComplete: 'off' }),
+        React.createElement('input', { ref: 'mainInput', type: 'text', id: 'mainEntry', autoComplete: 'off', defaultValu: '' }),
         React.createElement(
           'button',
           { onClick: this.getMovie },
@@ -19442,18 +19451,20 @@ var PrimaryEntry = React.createClass({
 var MovieList = React.createClass({
   displayName: 'MovieList',
 
-  getDefaultProps: function () {
-    movies: [];
-  },
-
   render: function () {
+
+    var movieItems = [];
+    for (var i = 0; i < this.props.movies.length; i++) {
+      movieItems.push(React.createElement(MovieListItem, { key: i, movie: this.props.movies[i] }));
+    }
+
     return React.createElement(
       'div',
       { className: 'movieList' },
       React.createElement(
-        'ul',
+        'div',
         { className: 'listGroup' },
-        React.createElement(MovieListItem, null)
+        movieItems
       )
     );
   }
@@ -19467,9 +19478,18 @@ var MovieListItem = React.createClass({
   render: function () {
 
     return React.createElement(
-      'li',
+      'div',
       { className: 'list-group-item movieListItem' },
-      'This is a test list item!'
+      React.createElement(
+        'div',
+        { className: 'movieTitle' },
+        this.props.movie.title
+      ),
+      React.createElement(
+        'div',
+        { className: 'movieRating' },
+        React.createElement(Rating, { className: 'rating', empty: React.createElement(EmptyStar, null), full: React.createElement(FilledStar, null), readonly: true, initialRate: this.props.movie.rating })
+      )
     );
   }
 });
@@ -19480,7 +19500,7 @@ var MainContent = React.createClass({
   displayName: 'MainContent',
 
   getInitialState: function () {
-    return { progression: 0 };
+    return { progression: 0, movieCount: 0 };
   },
 
   getDefaultProps: function () {
@@ -19490,12 +19510,21 @@ var MainContent = React.createClass({
   },
 
   updateProgression: function (movies) {
-    console.log("Movies Value: " + movies);
     if (this.state.progression === 0) {
-      if (movies.length = 1) {
+      if (movies.length == 1) {
         this.props.movies.push(movies[0]);
         console.log("Added First Movie: " + movies[0].title);
-        this.setState({ progression: 1 });
+        this.setState({ progression: 1, movieCount: this.state.movieCount++ });
+      }
+    } else if (this.state.progression === 1) {
+      if (movies.length == 1) {
+        this.props.movies.push(movies[0]);
+        this.setState({ movieCount: this.state.movieCount++ });
+        this.props.uniqueId++;
+        console.log("Additional Movie Added: " + movies[0].title);
+        if (this.props.movies.length >= 5) {
+          this.setState({ progression: 2 });
+        }
       }
     }
   },
@@ -19542,8 +19571,10 @@ var MainContent = React.createClass({
           )
         )
       );
-    }
-    if (this.state.progression === 1) {
+    } else if (this.state.progression === 1) {
+
+      console.log("Progression 1 Entered, Movies is equal to: " + this.props.movies);
+
       components = React.createElement(
         'div',
         { className: 'container-fluid' },
@@ -19552,7 +19583,7 @@ var MainContent = React.createClass({
           { className: 'row', id: 'additionalEntry' },
           React.createElement(
             'div',
-            { className: 'col-md-6' },
+            { className: 'col-sm-6' },
             React.createElement(
               'div',
               { className: 'ratedMovies' },
@@ -19563,25 +19594,61 @@ var MainContent = React.createClass({
                   'h2',
                   null,
                   'Rated Movies'
-                ),
-                React.createElement(MovieList, null)
-              )
+                )
+              ),
+              React.createElement(MovieList, { movies: this.props.movies })
             )
           ),
           React.createElement(
             'div',
-            { className: 'col-md-6' },
+            { className: 'col-sm-6' },
             React.createElement(
               'div',
               { className: 'movieEntry' },
               React.createElement(
-                'h1',
-                null,
-                'This is where the entry will be!'
+                'div',
+                { className: 'container-fluid' },
+                React.createElement(
+                  'div',
+                  { className: 'row', id: 'title' },
+                  React.createElement(
+                    'div',
+                    { className: 'col-md-12' },
+                    React.createElement(
+                      'div',
+                      null,
+                      React.createElement('img', { src: 'images/logo.png' }),
+                      React.createElement(
+                        'h1',
+                        null,
+                        'What to See?'
+                      )
+                    )
+                  )
+                ),
+                React.createElement(
+                  'div',
+                  { className: 'row', id: 'entryField' },
+                  React.createElement(
+                    'div',
+                    { className: 'col-md-12' },
+                    React.createElement(
+                      'div',
+                      { id: 'initialPrompt' },
+                      React.createElement(PrimaryEntry, { returnFunction: this.updateProgression })
+                    )
+                  )
+                )
               )
             )
           )
         )
+      );
+    } else if (this.state.progression === 2) {
+      components = React.createElement(
+        'h1',
+        null,
+        'OMG FINAL STATE!!!'
       );
     }
 

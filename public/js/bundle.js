@@ -19645,10 +19645,83 @@ var MainContent = React.createClass({
         )
       );
     } else if (this.state.progression === 2) {
+
+      //function for getting movie object
+      var getBoxOffice = function (name) {
+
+        //format URL
+        var movieUrl = 'http://localhost:3000/api/out';
+
+        //get the movie via http request
+        var request = new XMLHttpRequest();
+        request.open('GET', movieUrl, false);
+        request.send();
+        return JSON.parse(request.response);
+      };
+
+      //formats movie into input
+      function formatInputMovie(movie) {
+        var dataPoint = { input: {}, output: {} };
+
+        //set input values
+        dataPoint.input.year = movie.year / 2020;
+        dataPoint.input.runtime = movie.runtime / 300;
+        dataPoint.input.criticRating = movie.criticRating / 100;
+        dataPoint.input.peopleRating = movie.peopleRating / 100;
+        dataPoint.input.imdbRating = movie.imdbRating / 10;
+        dataPoint.input.metascore = movie.metascore / 100;
+
+        dataPoint.output.rating = movie.rating / 5;
+
+        return dataPoint;
+      };
+
+      function formatOutputMovie(movie) {
+        var dataPoint = {};
+
+        //set input values
+        dataPoint.year = movie.year / 2020;
+        dataPoint.runtime = movie.runtime / 300;
+        dataPoint.criticRating = movie.criticRating / 100;
+        dataPoint.peopleRating = movie.peopleRating / 100;
+        dataPoint.imdbRating = movie.imdbRating / 10;
+        dataPoint.metascore = movie.metascore / 100;
+
+        return dataPoint;
+      };
+
+      //set up neural net
+      var net = new brain.NeuralNetwork();
+      var dataArray = [];
+
+      //format input
+      var movieArray = this.props.movies;
+      for (var i = 0; i < movieArray.length; i++) {
+        dataArray.push(formatInputMovie(movieArray[i]));
+      }
+
+      //train the net
+      net.train(dataArray);
+
+      //get movies out nows
+      var outNow = getBoxOffice();
+      var max = 0;
+      var maxIndex = 0;
+      for (var i = 0; i < outNow.movies.length; i++) {
+        outNow.movies[i].prediction = net.run(formatOutputMovie(outNow.movies[i])).rating * 5;
+        if (outNow.movies[i].prediction > max) {
+          max = outNow.movies[i].prediction;
+          maxIndex = i;
+        }
+      }
+
       components = React.createElement(
         'h1',
         null,
-        'OMG FINAL STATE!!!'
+        outNow.movies[maxIndex].title,
+        ' : ',
+        outNow.movies[maxIndex].prediction,
+        ' '
       );
     }
 

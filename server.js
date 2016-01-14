@@ -14,6 +14,47 @@ app.get('/',function(req, res){
   //res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+//get box office
+app.get('/api/out/',function(req,res){
+  request('http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=ny97sdcpqetasj8a4v2na8va', function(error, response, body){
+    if (!error && response.statusCode == 200) {
+      var movieObject = JSON.parse(body);
+      var returnObject = {};
+      returnObject.movies = [];
+
+      for(var i = 0; i < movieObject.movies.length; i++){
+        //grab current movie
+        var movie = movieObject.movies[i];
+
+        //create and populate movie object
+        var curr = {};
+        curr.title = movie.title;
+        curr.year = movie.year;
+        curr.runtime = movie.runtime;
+        curr.criticRating = movie.ratings.critics_score;
+        curr.peopleRating = movie.ratings.audience_score;
+
+        //get imdb info
+        if (movie.alternate_ids){
+          var imdbUrl = 'http://www.omdbapi.com/?i=tt' + movie.alternate_ids.imdb;
+          var imdbResponse = JSON.parse(syncRequest(imdbUrl).data);
+          curr.link = 'http://www.imdb.com/title/tt' + movie.alternate_ids.imdb;
+          curr.imdbRating = imdbResponse.imdbRating;
+          curr.metascore = imdbResponse.Metascore;
+          curr.poster = imdbResponse.Poster;
+          curr.director = imdbResponse.Director;
+          curr.actors = imdbResponse.Actors;
+        }
+
+        //put movie object in return object
+        returnObject.movies.push(curr);
+
+      }
+      res.sendStatus(JSON.stringify(returnObject));
+    }
+  });
+});
+
 //handle get request to api
 app.get('/api/',function(req, res){
 
@@ -49,7 +90,7 @@ app.get('/api/',function(req, res){
         curr.peopleRating = movie.ratings.audience_score;
 
         //get imdb info
-        if (movie.alternate_ids.imdb){
+        if (movie.alternate_ids){
           var imdbUrl = 'http://www.omdbapi.com/?i=tt' + movie.alternate_ids.imdb;
           var imdbResponse = JSON.parse(syncRequest(imdbUrl).data);
           curr.link = 'http://www.imdb.com/title/tt' + movie.alternate_ids.imdb;

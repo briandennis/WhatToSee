@@ -139,6 +139,40 @@ var PrimaryEntry = React.createClass({
   }
 });
 
+//Movie list component, holder for all movies
+var MovieList = React.createClass({
+
+  getDefaultProps: function(){
+    movies: []
+  },
+
+  render: function(){
+    return (
+      <div className='movieList'>
+        <ul className='listGroup'>
+          <MovieListItem />
+        </ul>
+      </div>
+    );
+  }
+
+});
+
+//Movie list item component, used for displaying each movie
+var MovieListItem = React.createClass({
+
+  render: function(){
+
+    return (
+      <li className='list-group-item movieListItem'>
+        This is a test list item!
+      </li>
+    );
+  }
+});
+
+//Main component, holds all others
+
 var MainContent = React.createClass({
 
   getInitialState: function(){
@@ -191,7 +225,23 @@ var MainContent = React.createClass({
     }
     if(this.state.progression === 1){
       components = (
-        <h1>Holy Cow it worked! Movie added: {this.props.movies[0].title}</h1>
+        <div className='container-fluid'>
+          <div className='row' id='additionalEntry'>
+            <div className='col-md-6'>
+              <div className='ratedMovies'>
+                <div id='ratedMoviesTitle'>
+                  <h2>Rated Movies</h2>
+                  <MovieList />
+                </div>
+              </div>
+            </div>
+            <div className='col-md-6'>
+              <div className='movieEntry'>
+                <h1>This is where the entry will be!</h1>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     }
 

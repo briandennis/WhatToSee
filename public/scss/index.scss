@@ -14,7 +14,6 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: solid 2px orange;
   div{
     display: flex;
     justify-content: center;
@@ -32,21 +31,29 @@ body{
   }
 }
 
-#entryField{
-  height: 60vh;
-}
 
 //Main div for React insertion
 #content{
-  margin-top: 10%;
+
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  #entryField{
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .movieInput{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
     input{
       background: none;
       font-size: 2em;
@@ -87,6 +94,7 @@ body{
   background: $bluebird;
   border-radius: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 0px;
   .moviePosterWrapper{
     height: 80%;
@@ -135,11 +143,53 @@ body{
       margin: 0 auto;
     }
     .rating{
-      //border: solid 4px orange;
       margin-bottom: 10%;
     }
   }
 }
+
+////////////////////////////////// Additional Movies Entry /////////////////////////////////////
+
+#additionalEntry{
+  width: 100vw;
+  height: 100vh;
+}
+
+.ratedMovies{
+  width: 45vw;
+  height: 100vh;
+  border: solid 2px green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2{
+    color: $candy;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .movieList{
+
+    .movieListItem{
+      background: $bluebird;
+      border: solid 2px $candy;
+      padding-left: 0px;
+      margin-left: 0px;
+    }
+
+  }
+
+}
+.movieEntry{
+  width: 45vw;
+  height: 100vh;
+  border: solid 2px orange;
+}
+
+
+
+/////////////////////////////// Star Styling /////////////////////////////////////////////////////
 
 .emptyStar{
   font-size: 2em;

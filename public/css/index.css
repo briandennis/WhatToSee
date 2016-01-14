@@ -5,8 +5,7 @@ body {
   height: 40vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border: solid 2px orange; }
+  justify-content: center; }
   #title div {
     display: flex;
     justify-content: center;
@@ -20,19 +19,23 @@ body {
     color: #FF729F;
     margin: 0 auto; }
 
-#entryField {
-  height: 60vh; }
-
 #content {
-  margin-top: 10%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center; }
+  #content #entryField {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
   #content .movieInput {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    padding-bottom: 20px; }
     #content .movieInput input {
       background: none;
       font-size: 2em;
@@ -66,6 +69,7 @@ body {
   background: #56CBF9;
   border-radius: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 0px; }
   .movie .moviePosterWrapper {
     height: 80%;
@@ -103,6 +107,32 @@ body {
       margin: 0 auto; }
     .movie .movieInfoWrapper .rating {
       margin-bottom: 10%; }
+
+#additionalEntry {
+  width: 100vw;
+  height: 100vh; }
+
+.ratedMovies {
+  width: 45vw;
+  height: 100vh;
+  border: solid 2px green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .ratedMovies h2 {
+    color: #FF729F;
+    font-family: 'Lato', sans-serif; }
+  .ratedMovies .movieList .movieListItem {
+    background: #56CBF9;
+    border: solid 2px #FF729F;
+    padding-left: 0px;
+    margin-left: 0px; }
+
+.movieEntry {
+  width: 45vw;
+  height: 100vh;
+  border: solid 2px orange; }
 
 .emptyStar {
   font-size: 2em;

@@ -19438,6 +19438,44 @@ var PrimaryEntry = React.createClass({
   }
 });
 
+//Movie list component, holder for all movies
+var MovieList = React.createClass({
+  displayName: 'MovieList',
+
+  getDefaultProps: function () {
+    movies: [];
+  },
+
+  render: function () {
+    return React.createElement(
+      'div',
+      { className: 'movieList' },
+      React.createElement(
+        'ul',
+        { className: 'listGroup' },
+        React.createElement(MovieListItem, null)
+      )
+    );
+  }
+
+});
+
+//Movie list item component, used for displaying each movie
+var MovieListItem = React.createClass({
+  displayName: 'MovieListItem',
+
+  render: function () {
+
+    return React.createElement(
+      'li',
+      { className: 'list-group-item movieListItem' },
+      'This is a test list item!'
+    );
+  }
+});
+
+//Main component, holds all others
+
 var MainContent = React.createClass({
   displayName: 'MainContent',
 
@@ -19507,10 +19545,43 @@ var MainContent = React.createClass({
     }
     if (this.state.progression === 1) {
       components = React.createElement(
-        'h1',
-        null,
-        'Holy Cow it worked! Movie added: ',
-        this.props.movies[0].title
+        'div',
+        { className: 'container-fluid' },
+        React.createElement(
+          'div',
+          { className: 'row', id: 'additionalEntry' },
+          React.createElement(
+            'div',
+            { className: 'col-md-6' },
+            React.createElement(
+              'div',
+              { className: 'ratedMovies' },
+              React.createElement(
+                'div',
+                { id: 'ratedMoviesTitle' },
+                React.createElement(
+                  'h2',
+                  null,
+                  'Rated Movies'
+                ),
+                React.createElement(MovieList, null)
+              )
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'col-md-6' },
+            React.createElement(
+              'div',
+              { className: 'movieEntry' },
+              React.createElement(
+                'h1',
+                null,
+                'This is where the entry will be!'
+              )
+            )
+          )
+        )
       );
     }
 

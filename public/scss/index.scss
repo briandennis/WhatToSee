@@ -14,6 +14,7 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: solid 2px orange;
   div{
     display: flex;
     justify-content: center;
@@ -29,6 +30,10 @@ body{
     color: $candy;
     margin: 0 auto;
   }
+}
+
+#entryField{
+  height: 60vh;
 }
 
 //Main div for React insertion

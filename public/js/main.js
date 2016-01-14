@@ -36,10 +36,11 @@ var Movie = React.createClass({
   },
 
   rateMovie: function(rating){
+    console.log('rating function entered!');
     if(rating){
-      if([1,2,3,4,5].contains(rating)){
+      if([1,2,3,4,5].indexOf(rating) >= 0){
         this.props.movie.rating = rating;
-        console.log(rating);
+        this.props.beenRatedFunction(this.props.movie);
       }
     }
   },
@@ -62,7 +63,7 @@ var Movie = React.createClass({
         <div className='movieInfoWrapper'>
           <a target='_blank' href={this.props.movie.link}><h2 className={titleFont}>{shortTitle}</h2></a>
           <div className='rating'>
-            <Rating className='rating' empty={<EmptyStar />} full={<FilledStar />} />
+            <Rating className='rating' empty={<EmptyStar />} full={<FilledStar />} onChange={this.rateMovie} />
           </div>
         </div>
       </div>
@@ -74,7 +75,13 @@ var Movie = React.createClass({
 //Initial entry of movie and messages
 var PrimaryEntry = React.createClass({
   getInitialState: function(){
-    return {message: <p className='message'>enter a movie you would like to rate</p>};
+    return {
+      message: <p className='message'>enter a movie you would like to rate</p>,
+    };
+  },
+
+  recieveRating: function(movie){
+    this.props.returnFunction([movie]);
   },
 
   getMovie: function(){
@@ -105,7 +112,7 @@ var PrimaryEntry = React.createClass({
       console.log('Response: ' + response.movies[0].poster);
       displayMessage = (
         <div className='moviePreview'>
-          <Movie movie={response.movies[0]} />
+          <Movie beenRatedFunction={this.recieveRating} movie={response.movies[0]} />
           <p className='message'>Awesome, now give it a rating! Or try another search</p>
         </div>
       );
@@ -135,17 +142,56 @@ var PrimaryEntry = React.createClass({
 var MainContent = React.createClass({
 
   getInitialState: function(){
-    return {initialScreen: true};
+    return {progression: 0};
+  },
+
+  getDefaultProps: function(){
+    return {
+      movies: []
+    };
+  },
+
+  updateProgression: function(movies){
+      console.log("Movies Value: " + movies);
+      if(this.state.progression === 0){
+        if(movies.length = 1){
+          this.props.movies.push(movies[0]);
+          console.log("Added First Movie: " + movies[0].title);
+          this.setState({progression: 1});
+        }
+      }
   },
 
   render: function(){
+
     //determine state and pick components accordingly
     var components;
-    if (this.state.initialScreen){
+
+    if (this.state.progression === 0){
+      console.log('Progression is 0');
       components = (
-        <div id='initialPrompt'>
-          <PrimaryEntry />
-        </div>
+          <div className='container-fluid'>
+            <div className='row' id='title'>
+              <div className='col-md-12'>
+                <div>
+                  <img src='images/logo.png'></img>
+                  <h1>What to See?</h1>
+                </div>
+              </div>
+            </div>
+            <div className='row' id='entryField'>
+              <div className='col-md-12'>
+                <div id='initialPrompt'>
+                  <PrimaryEntry returnFunction={this.updateProgression} />
+                </div>
+              </div>
+            </div>
+          </div>
+      );
+    }
+    if(this.state.progression === 1){
+      components = (
+        <h1>Holy Cow it worked! Movie added: {this.props.movies[0].title}</h1>
       );
     }
 

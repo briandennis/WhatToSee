@@ -46,6 +46,15 @@ var Movie = React.createClass({
   },
 
   render: function(){
+
+    var ratingModule;
+    if(this.props.movie.prediction){
+      ratingModule = <Rating className='rating' empty={<EmptyStar />} full={<FilledStar />} readonly={true} initialRate={Math.round(this.props.movie.prediction)} /> ;
+    }
+    else{
+      ratingModule = <Rating className='rating' empty={<EmptyStar />} full={<FilledStar />} onChange={this.rateMovie} /> ;
+    }
+
     var titleFont = 'normal';
     var shortTitle = this.props.movie.title;
     if(shortTitle.length > 15){
@@ -63,7 +72,7 @@ var Movie = React.createClass({
         <div className='movieInfoWrapper'>
           <a target='_blank' href={this.props.movie.link}><h2 className={titleFont}>{shortTitle}</h2></a>
           <div className='rating'>
-            <Rating className='rating' empty={<EmptyStar />} full={<FilledStar />} onChange={this.rateMovie} />
+            {ratingModule}
           </div>
         </div>
       </div>
@@ -362,7 +371,16 @@ var MainContent = React.createClass({
 
 
 
-      components = (<h1>{outNow.movies[maxIndex].title} : {outNow.movies[maxIndex].prediction} </h1>);
+      components = (
+        <div className='predictionWrapper'>
+          <div className = 'ratedMoviesTitle'>
+            <h2>Okay, thanks for the information! You should go see...</h2>
+          </div>
+          <div className='thePrediction'>
+            <Movie movie={outNow.movies[maxIndex]} />
+          </div>
+        </div>
+      );
     }
 
     return components;

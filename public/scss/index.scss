@@ -39,6 +39,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 95vh;
 
   #entryField{
     height: 60vh;
@@ -152,12 +153,12 @@ body{
 
 #additionalEntry{
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
 }
 
 .ratedMovies{
   width: 45vw;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -191,7 +192,26 @@ body{
 }
 .movieEntry{
   width: 45vw;
-  height: 100vh;
+  height: 95vh;
+}
+
+///////////////////////////////Final Prediction /////////////////////////////////////////////////
+.predictionWrapper{
+  width: 90vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2{
+    color: $candy;
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 20px;
+    font-size: 2em;
+  }
+}
+.thePrediction{
+  width: 50vw;
 }
 
 
@@ -211,4 +231,24 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#footer{
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: $candy;
+  padding-left: 20px;
+  a{
+    color: inherit;
+    h2{
+      color: inherit;
+    }
+  }
+  a:hover{
+    text-decoration: none;
+    color: white;
+  }
 }

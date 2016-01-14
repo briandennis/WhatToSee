@@ -19313,6 +19313,14 @@ var Movie = React.createClass({
   },
 
   render: function () {
+
+    var ratingModule;
+    if (this.props.movie.prediction) {
+      ratingModule = React.createElement(Rating, { className: 'rating', empty: React.createElement(EmptyStar, null), full: React.createElement(FilledStar, null), readonly: true, initialRate: Math.round(this.props.movie.prediction) });
+    } else {
+      ratingModule = React.createElement(Rating, { className: 'rating', empty: React.createElement(EmptyStar, null), full: React.createElement(FilledStar, null), onChange: this.rateMovie });
+    }
+
     var titleFont = 'normal';
     var shortTitle = this.props.movie.title;
     if (shortTitle.length > 15) {
@@ -19345,7 +19353,7 @@ var Movie = React.createClass({
         React.createElement(
           'div',
           { className: 'rating' },
-          React.createElement(Rating, { className: 'rating', empty: React.createElement(EmptyStar, null), full: React.createElement(FilledStar, null), onChange: this.rateMovie })
+          ratingModule
         )
       )
     );
@@ -19716,12 +19724,22 @@ var MainContent = React.createClass({
       }
 
       components = React.createElement(
-        'h1',
-        null,
-        outNow.movies[maxIndex].title,
-        ' : ',
-        outNow.movies[maxIndex].prediction,
-        ' '
+        'div',
+        { className: 'predictionWrapper' },
+        React.createElement(
+          'div',
+          { className: 'ratedMoviesTitle' },
+          React.createElement(
+            'h2',
+            null,
+            'Okay, thanks for the information! You should go see...'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'thePrediction' },
+          React.createElement(Movie, { movie: outNow.movies[maxIndex] })
+        )
       );
     }
 

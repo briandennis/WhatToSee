@@ -23,7 +23,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  height: 95vh; }
   #content #entryField {
     height: 60vh;
     display: flex;
@@ -110,11 +111,11 @@ body {
 
 #additionalEntry {
   width: 100vw;
-  height: 100vh; }
+  height: 95vh; }
 
 .ratedMovies {
   width: 45vw;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,7 +141,23 @@ body {
 
 .movieEntry {
   width: 45vw;
-  height: 100vh; }
+  height: 95vh; }
+
+.predictionWrapper {
+  width: 90vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .predictionWrapper h2 {
+    color: #FF729F;
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 20px;
+    font-size: 2em; }
+
+.thePrediction {
+  width: 50vw; }
 
 .emptyStar {
   font-size: 2em;
@@ -155,3 +172,19 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+
+#footer {
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: #FF729F;
+  padding-left: 20px; }
+  #footer a {
+    color: inherit; }
+    #footer a h2 {
+      color: inherit; }
+  #footer a:hover {
+    text-decoration: none;
+    color: white; }

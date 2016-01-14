@@ -1,0 +1,261 @@
+body {
+  background: #81F4E1; }
+
+.splashWrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .splashWrapper div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+  .splashWrapper .splashTitle img {
+    align-self: center;
+    height: 150px; }
+  .splashWrapper .splashTitle h1 {
+    font-family: 'Lato',sans-serif;
+    font-size: 3em;
+    color: #FF729F;
+    margin: 0 auto; }
+  .splashWrapper p {
+    align-self: center;
+    text-align: center;
+    width: 30%;
+    padding-top: 50px;
+    color: white;
+    font-size: 1.3em;
+    font-family: 'Lato', sans-serif; }
+    .splashWrapper p #accent {
+      color: #FF729F; }
+  .splashWrapper .button {
+    padding-top: 50px;
+    width: 120px;
+    margin: 0 auto; }
+
+#title {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  #title div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+  #title img {
+    align-self: center;
+    height: 150px; }
+  #title h1 {
+    font-family: 'Lato',sans-serif;
+    font-size: 3em;
+    color: #FF729F;
+    margin: 0 auto; }
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh; }
+  #content #entryField {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  #content .movieInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px; }
+    #content .movieInput input {
+      background: none;
+      font-size: 2em;
+      border: none;
+      border-bottom: solid 3px white;
+      outline: none;
+      font-family: 'Lato', sans-serif;
+      color: white; }
+    #content .movieInput input:focus {
+      border-bottom: solid 3px #FF729F; }
+    #content .movieInput button {
+      background: none;
+      border: none;
+      font-size: 2em;
+      color: #FF729F;
+      outline: none; }
+    #content .movieInput button:hover {
+      color: white; }
+  #content .message {
+    font-size: 1.5em;
+    color: #FF729F;
+    font-family: 'Lato', sans-serif; }
+
+.movie {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 15vh;
+  border: solid 3px #FF729F;
+  background: #56CBF9;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0px; }
+  .movie .moviePosterWrapper {
+    height: 80%;
+    width: 40%; }
+    .movie .moviePosterWrapper img {
+      display: block;
+      height: 100%;
+      border-radius: 10px;
+      margin: 0 auto; }
+    .movie .moviePosterWrapper .iconDiv {
+      padding-top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .movie .moviePosterWrapper .movieIcon {
+      margin: 0 auto;
+      font-size: 4em;
+      color: #81F4E1; }
+  .movie .movieInfoWrapper {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; }
+    .movie .movieInfoWrapper a {
+      text-decoration: none; }
+      .movie .movieInfoWrapper a h2.normal {
+        color: #FF729F;
+        font-size: 2em;
+        font-family: 'Lato', sans-serif; }
+      .movie .movieInfoWrapper a h2.smallFont {
+        color: #FF729F;
+        font-size: 1.2em;
+        padding-bottom: 10px;
+        font-family: 'Lato', sans-serif; }
+    .movie .movieInfoWrapper a:hover h2 {
+      color: white;
+      font-family: 'Lato', sans-serif; }
+    .movie .movieInfoWrapper p {
+      font-family: 'Lato', sans-serif;
+      color: white;
+      display: block;
+      margin: 0 auto; }
+    .movie .movieInfoWrapper .rating {
+      margin-bottom: 10%; }
+
+#additionalEntry {
+  width: 100vw;
+  height: 95vh; }
+
+.ratedMovies {
+  width: 45vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .ratedMovies h2 {
+    color: #FF729F;
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 20px; }
+  .ratedMovies p {
+    font-size: 1.3em;
+    color: #FF729F;
+    padding-top: 20px;
+    font-family: 'Lato', sans-serif; }
+  .ratedMovies .movieList {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .ratedMovies .movieList .movieListItem {
+      background: #56CBF9;
+      border: solid 2px #FF729F;
+      border-radius: 10px;
+      margin-right: 10px;
+      color: #FF729F;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.2em;
+      width: 30vw;
+      margin-top: 10px; }
+
+.movieEntry {
+  width: 45vw;
+  height: 95vh; }
+
+.predictionWrapper {
+  width: 90vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .predictionWrapper h2 {
+    color: #FF729F;
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 20px;
+    font-size: 2em; }
+
+.thePrediction {
+  width: 50vw; }
+
+.resetWrapper {
+  border: solid 2px #56CBF9;
+  border-radius: 10px;
+  color: #56CBF9;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer; }
+  .resetWrapper h3 {
+    padding: 5px;
+    margin: 5px; }
+
+.resetWrapper:hover {
+  background: #56CBF9;
+  color: #81F4E1; }
+
+.resetButton {
+  position: relative;
+  top: 100px; }
+
+.emptyStar {
+  font-size: 2em;
+  color: #4FB9E3; }
+
+.filledStar {
+  font-size: 2em;
+  color: #FFDF88; }
+
+#primaryEntry {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+#footer {
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: #FF729F;
+  padding-left: 20px; }
+  #footer a {
+    color: inherit; }
+    #footer a h2 {
+      color: inherit; }
+  #footer a:hover {
+    text-decoration: none;
+    color: white; }

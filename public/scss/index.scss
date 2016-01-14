@@ -1,0 +1,342 @@
+$mint: #81F4E1;
+$bluebird: #56CBF9;
+$candy: #FF729F;
+$empty: #4FB9E3;
+$filled: #FFDF88;
+
+body{
+  background: $mint;
+}
+
+////////////////////////////////////////////Splash Page /////////////////////////////
+.splashWrapper{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .splashTitle{
+    img{
+      align-self: center;
+      height: 150px;
+    }
+    h1{
+      font-family: 'Lato',sans-serif;
+      font-size: 3em;
+      color: $candy;
+      margin: 0 auto;
+    }
+  }
+  p{
+    align-self: center;
+    text-align: center;
+    width: 30%;
+    padding-top: 50px;
+    color: white;
+    font-size: 1.3em;
+    font-family: 'Lato', sans-serif;
+    #accent{
+      color: $candy;
+    }
+  }
+  .button{
+    padding-top: 50px;
+    width: 120px;
+    margin: 0 auto;
+  }
+}
+
+//Main Title Header and Logo
+#title{
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  img{
+    align-self: center;
+    height: 150px;
+  }
+  h1{
+    font-family: 'Lato',sans-serif;
+    font-size: 3em;
+    color: $candy;
+    margin: 0 auto;
+  }
+}
+
+
+
+//Main div for React insertion
+#content{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+
+  #entryField{
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .movieInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    input{
+      background: none;
+      font-size: 2em;
+      border: none;
+      border-bottom: solid 3px white;
+      outline: none;
+      font-family: 'Lato', sans-serif;
+      color: white;
+    }
+    input:focus{
+      border-bottom: solid 3px $candy;
+    }
+    button{
+      background: none;
+      border: none;
+      font-size: 2em;
+      color: $candy;
+      outline: none;
+    }
+    button:hover{
+      color: white;
+    }
+  }
+  .message{
+    font-size: 1.5em;
+    color: $candy;
+    font-family: 'Lato', sans-serif;
+  }
+}
+
+.movie{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 15vh;
+  border: solid 3px $candy;
+  background: $bluebird;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0px;
+  .moviePosterWrapper{
+    height: 80%;
+    width: 40%;
+    img{
+      display: block;
+      height: 100%;
+      border-radius: 10px;
+      margin: 0 auto;
+    }
+    .iconDiv{
+      padding-top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .movieIcon{
+      margin: 0 auto;
+      font-size: 4em;
+      color: $mint;
+    }
+  }
+  .movieInfoWrapper{
+    width: 60%;
+    height: 100%;
+    //border: solid 4px purple;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    a{
+      text-decoration: none;
+      //margin-bottom: -15px;
+      h2.normal{
+        color: $candy;
+        font-size: 2em;
+        font-family: 'Lato', sans-serif;
+        //border: solid 2px green;
+      }
+      h2.smallFont{
+        color: $candy;
+        font-size: 1.2em;
+        padding-bottom: 10px;
+        font-family: 'Lato', sans-serif;
+      }
+    }
+    a:hover{
+      h2{
+        color: white;
+        font-family: 'Lato', sans-serif;
+      }
+    }
+    p{
+      font-family: 'Lato', sans-serif;
+      color: white;
+      display: block;
+      margin: 0 auto;
+    }
+    .rating{
+      margin-bottom: 10%;
+    }
+  }
+}
+
+////////////////////////////////// Additional Movies Entry /////////////////////////////////////
+
+#additionalEntry{
+  width: 100vw;
+  height: 95vh;
+}
+
+.ratedMovies{
+  width: 45vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2{
+    color: $candy;
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 20px;
+  }
+
+  p{
+    font-size: 1.3em;
+    color: $candy;
+    padding-top: 20px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .movieList{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .movieListItem{
+      background: $bluebird;
+      border: solid 2px $candy;
+      border-radius: 10px;
+      margin-right: 10px;
+      color: $candy;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.2em;
+      width: 30vw;
+      margin-top: 10px;
+    }
+
+  }
+
+}
+.movieEntry{
+  width: 45vw;
+  height: 95vh;
+}
+
+///////////////////////////////Final Prediction /////////////////////////////////////////////////
+.predictionWrapper{
+  width: 90vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2{
+    color: $candy;
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 20px;
+    font-size: 2em;
+  }
+}
+.thePrediction{
+  width: 50vw;
+}
+
+////////////////////////////////Reset Button//////////////////////////////////////////////////////
+.resetWrapper{
+  border: solid 2px $bluebird;
+  border-radius: 10px;
+  color: $bluebird;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer;
+  h3{
+    padding: 5px;
+    margin: 5px;
+  }
+}
+.resetWrapper:hover{
+  background: $bluebird;
+  color: $mint;
+}
+
+.resetButton{
+  position: relative;
+  top: 100px;
+}
+
+/////////////////////////////// Star Styling /////////////////////////////////////////////////////
+
+.emptyStar{
+  font-size: 2em;
+  color: $empty;
+}
+.filledStar{
+  font-size: 2em;
+  color: $filled;
+}
+#primaryEntry{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer{
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: $candy;
+  padding-left: 20px;
+  a{
+    color: inherit;
+    h2{
+      color: inherit;
+    }
+  }
+  a:hover{
+    text-decoration: none;
+    color: white;
+  }
+}

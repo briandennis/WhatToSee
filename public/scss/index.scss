@@ -170,6 +170,13 @@ body{
     padding-bottom: 20px;
   }
 
+  p{
+    font-size: 1.3em;
+    color: $candy;
+    padding-top: 20px;
+    font-family: 'Lato', sans-serif;
+  }
+
   .movieList{
     text-align: center;
     display: flex;

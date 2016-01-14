@@ -95,10 +95,17 @@ var PrimaryEntry = React.createClass({
     this.props.returnFunction([movie]);
   },
 
+  getKeyPress: function(e){
+    console.log('entered!!');
+    if(e.keyCode==13){
+      alert('you pressed enter!');
+    }
+  },
+
   getMovie: function(){
 
     //variables needed
-    var errorMessage = <p className='message'>Please enter a valid movie title!</p>;
+    var errorMessage = <p className='message'>wasn't able to find anything for that... try another search!</p>;
 
     //function for getting movie object
     var getMovie = function(name){
@@ -122,13 +129,18 @@ var PrimaryEntry = React.createClass({
       //get movies
       var response = getMovie(movieTitle);
       var displayMessage = errorMessage;
-      console.log('Response: ' + response.movies[0].poster);
-      displayMessage = (
-        <div className='moviePreview'>
-          <Movie beenRatedFunction={this.recieveRating} movie={response.movies[0]} />
-          <p className='message'>Awesome, now give it a rating! Or try another search</p>
-        </div>
-      );
+
+      if(response.movies.length === 0){
+        displayMessage = errorMessage;
+      }
+      else{
+        displayMessage = (
+          <div className='moviePreview'>
+            <Movie beenRatedFunction={this.recieveRating} movie={response.movies[0]} />
+            <p className='message'>Awesome, now give it a rating! Or try another search</p>
+          </div>
+        );
+      }
 
       //set message
       this.setState({message: displayMessage});
@@ -268,6 +280,7 @@ var MainContent = React.createClass({
                   <h2>Rated Movies</h2>
                 </div>
                 <MovieList movies={this.props.movies} />
+                <p class='message'>rate {5 - this.props.movies.length} more movies</p>
               </div>
             </div>
             <div className='col-sm-6'>

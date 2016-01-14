@@ -17,10 +17,13 @@ app.get('/',function(req, res){
 //get box office
 app.get('/api/out/',function(req,res){
   request('http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=ny97sdcpqetasj8a4v2na8va', function(error, response, body){
+
+    //Setup Return varaible.
+    var returnObject = {};
+    returnObject.movies = [];
+
     if (!error && response.statusCode == 200) {
       var movieObject = JSON.parse(body);
-      var returnObject = {};
-      returnObject.movies = [];
 
       for(var i = 0; i < movieObject.movies.length; i++){
         //grab current movie
@@ -50,8 +53,11 @@ app.get('/api/out/',function(req,res){
         returnObject.movies.push(curr);
 
       }
-      res.sendStatus(JSON.stringify(returnObject));
     }
+
+    //send response
+    res.sendStatus(JSON.stringify(returnObject));
+
   });
 });
 
@@ -69,14 +75,16 @@ app.get('/api/',function(req, res){
   var finalUrl = movieUrlPart1 + movieSearch + movieUrlPart2;
 
   request(finalUrl, function (error, response, body) {
+
+    //create return variables
+    var returnObject = {};
+    returnObject.movies = [];
+
     if (!error && response.statusCode == 200) {
       //Create variables
       var movieObject = JSON.parse(body);
-      console.log("Movies Length: " + movieObject.movies.length );
-      var returnObject = {};
 
       //format movie objects
-      returnObject.movies = [];
       for(var i = 0; i < movieObject.movies.length; i++){
         //grab current movie
         var movie = movieObject.movies[i];
@@ -105,8 +113,10 @@ app.get('/api/',function(req, res){
         returnObject.movies.push(curr);
 
       }
-      res.sendStatus(JSON.stringify(returnObject));
     }
+
+    res.sendStatus(JSON.stringify(returnObject));
+
   });
 });
 

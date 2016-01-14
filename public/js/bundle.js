@@ -19384,13 +19384,20 @@ var PrimaryEntry = React.createClass({
     this.props.returnFunction([movie]);
   },
 
+  getKeyPress: function (e) {
+    console.log('entered!!');
+    if (e.keyCode == 13) {
+      alert('you pressed enter!');
+    }
+  },
+
   getMovie: function () {
 
     //variables needed
     var errorMessage = React.createElement(
       'p',
       { className: 'message' },
-      'Please enter a valid movie title!'
+      'wasn\'t able to find anything for that... try another search!'
     );
 
     //function for getting movie object
@@ -19415,17 +19422,21 @@ var PrimaryEntry = React.createClass({
       //get movies
       var response = getMovie(movieTitle);
       var displayMessage = errorMessage;
-      console.log('Response: ' + response.movies[0].poster);
-      displayMessage = React.createElement(
-        'div',
-        { className: 'moviePreview' },
-        React.createElement(Movie, { beenRatedFunction: this.recieveRating, movie: response.movies[0] }),
-        React.createElement(
-          'p',
-          { className: 'message' },
-          'Awesome, now give it a rating! Or try another search'
-        )
-      );
+
+      if (response.movies.length === 0) {
+        displayMessage = errorMessage;
+      } else {
+        displayMessage = React.createElement(
+          'div',
+          { className: 'moviePreview' },
+          React.createElement(Movie, { beenRatedFunction: this.recieveRating, movie: response.movies[0] }),
+          React.createElement(
+            'p',
+            { className: 'message' },
+            'Awesome, now give it a rating! Or try another search'
+          )
+        );
+      }
 
       //set message
       this.setState({ message: displayMessage });
@@ -19604,7 +19615,14 @@ var MainContent = React.createClass({
                   'Rated Movies'
                 )
               ),
-              React.createElement(MovieList, { movies: this.props.movies })
+              React.createElement(MovieList, { movies: this.props.movies }),
+              React.createElement(
+                'p',
+                { 'class': 'message' },
+                'rate ',
+                5 - this.props.movies.length,
+                ' more movies'
+              )
             )
           ),
           React.createElement(

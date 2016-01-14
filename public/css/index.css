@@ -124,6 +124,11 @@ body {
     color: #FF729F;
     font-family: 'Lato', sans-serif;
     padding-bottom: 20px; }
+  .ratedMovies p {
+    font-size: 1.3em;
+    color: #FF729F;
+    padding-top: 20px;
+    font-family: 'Lato', sans-serif; }
   .ratedMovies .movieList {
     text-align: center;
     display: flex;

@@ -19341,7 +19341,7 @@ var Movie = React.createClass({
       { className: 'iconDiv' },
       React.createElement('i', { className: 'fa fa-film movieIcon' })
     );
-    if (this.props.movie.poster) {
+    if (this.props.movie.poster && this.props.movie.poster.substring(0, 3) === 'http') {
       moviePoster = React.createElement('img', { className: 'poster', src: this.props.movie.poster });
     }
 
@@ -19419,7 +19419,7 @@ var PrimaryEntry = React.createClass({
     var getMovie = function (name) {
 
       //format URL
-      var movieUrl = 'https://boiling-springs-9862.herokuapp.com/api?movie=' + name;
+      var movieUrl = 'https://movies.briandennis.io/api?movie=' + name;
 
       //get the movie via http request
       var request = new XMLHttpRequest();
@@ -19748,7 +19748,7 @@ var MainContent = React.createClass({
       var getBoxOffice = function (name) {
 
         //format URL
-        var movieUrl = 'https://boiling-springs-9862.herokuapp.com/api/out';
+        var movieUrl = 'https://movies.briandennis.io/api/out';
 
         //get the movie via http request
         var request = new XMLHttpRequest();

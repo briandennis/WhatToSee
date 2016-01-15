@@ -58,7 +58,6 @@ app.get('/api/out/',function(req,res){
 
     //send response
     res.sendStatus(200);
-    res.send(JSON.stringify(returnObject));
 
   });
 });

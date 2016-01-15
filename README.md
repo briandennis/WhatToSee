@@ -25,6 +25,13 @@ The users attributed score is the output for the training points.
 
 ### Server Side
 
-*[NodeJS](https://nodejs.org/en/)
-*[ExpressJS](http://expressjs.com/)
+* [NodeJS](https://nodejs.org/en/)
+* [ExpressJS](http://expressjs.com/)
+* 
+
+##TODO 
+
+- [ ] Submit movies on enter key 
+- [ ] Fade animations
+- [ ] Prevent users from submitting same movie multiple times
 

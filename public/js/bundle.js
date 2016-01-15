@@ -19341,7 +19341,7 @@ var Movie = React.createClass({
       { className: 'iconDiv' },
       React.createElement('i', { className: 'fa fa-film movieIcon' })
     );
-    if (this.props.movie.poster && this.props.movie.poster.substring(0, 3) === 'http') {
+    if (this.props.movie.poster) {
       moviePoster = React.createElement('img', { className: 'poster', src: this.props.movie.poster });
     }
 

@@ -1,6 +1,6 @@
-# WhatToSee
+<img src="public/images/logo.png" height="150" style="margin: 0 auto;"/>
 
-<img src="public/images/logo.png" height="150"/>
+# WhatToSee
 
 ## About
 

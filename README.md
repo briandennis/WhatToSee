@@ -1,6 +1,6 @@
-<p align="center"><img src="public/images/logo.png" height="150"/></p>
-
 # WhatToSee
+
+<p align="center"><img src="public/images/logo.png" height="150"/></p>
 
 ## About
 

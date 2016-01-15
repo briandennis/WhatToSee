@@ -1,7 +1,7 @@
 {
   "name": "whatsout",
   "version": "1.0.0",
-  "description": "Don't worry about it",
+  "description": "What To See? helps you choose which movie in theaters you should go see.",
   "main": "server.js",
   "dependencies": {
     "express": "^4.13.3",

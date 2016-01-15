@@ -65,7 +65,7 @@ var Movie = React.createClass({
     }
 
     var moviePoster = <div className='iconDiv'><i className='fa fa-film movieIcon'></i></div>;
-    if(this.props.movie.poster){
+    if(this.props.movie.poster && this.props.movie.poster.substring(0,3) === 'http'){
       moviePoster = <img className='poster' src={this.props.movie.poster}></img>;
     }
 

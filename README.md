@@ -2,9 +2,6 @@
 
 <p align="center"><img src="public/images/logo.png" height="150"/></p>
 
-Check it out [here](movies.briandennis.io)
-
-
 ## About
 
 [What To See?](movies.briandennis.io) helps you choose which movie in theaters you should go see. 

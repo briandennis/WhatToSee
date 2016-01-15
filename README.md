@@ -1,4 +1,4 @@
-<img src="public/images/logo.png" height="150" style="margin: 0 auto;"/>
+<div style="text-align: center"><img src="public/images/logo.png" height="150"/> </div>
 
 # WhatToSee
 

@@ -1,3 +1,39 @@
-# WhatsOut
+# WhatToSee
 
-Don't Worry About It
+<p align="center"><img src="public/images/logo.png" height="150"/></p>
+
+## About
+
+[What To See?](http://movies.briandennis.io) helps you choose which movie in theaters you should go see. 
+
+The prediction is made by an artificial neural network which uses movies the user rates as training points. Each movie has several input features including: 
+
+* Year
+* Runtime
+* Rotten Tomatoes critic score
+* Rotten Tomatoes user score
+* IMDB rating
+* Metacritic score
+
+The users attributed score is the output for the training points. 
+
+##Technology
+
+### Client Side
+
+* [ReactJS](https://facebook.github.io/react/)
+* [Bootstrap](http://getbootstrap.com/)
+* [Brain](https://github.com/harthur/brain)
+
+### Server Side
+
+* [NodeJS](https://nodejs.org/en/)
+* [ExpressJS](http://expressjs.com/)
+
+##TODO 
+
+- [X] ~~Write second API to get movies currently out~~
+- [ ] Submit movies on enter key 
+- [ ] Fade animations
+- [ ] Prevent users from submitting same movie multiple times
+

@@ -57,9 +57,8 @@ app.get('/api/out/',function(req,res){
     }
 
     //send response
-    res.writeHead(200,{'Content-Type': 'text/plain'});
-    res.write(JSON.stringify(returnObject));
-    res.end();
+    res.sendStatus(200);
+    res.send(JSON.stringify(returnObject));
 
   });
 });

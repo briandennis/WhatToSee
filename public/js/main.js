@@ -116,7 +116,7 @@ var PrimaryEntry = React.createClass({
     var getMovie = function(name){
 
       //format URL
-      var movieUrl = 'https://boiling-springs-9862.herokuapp.com/api?movie=' + name ;
+      var movieUrl = 'https://movies.briandennis.io/api?movie=' + name ;
 
       //get the movie via http request
       var request = new XMLHttpRequest();
@@ -348,7 +348,7 @@ var MainContent = React.createClass({
       var getBoxOffice = function(name){
 
         //format URL
-        var movieUrl = 'https://boiling-springs-9862.herokuapp.com/api/out';
+        var movieUrl = 'https://movies.briandennis.io/api/out';
 
         //get the movie via http request
         var request = new XMLHttpRequest();

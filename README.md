@@ -4,7 +4,7 @@
 
 ## About
 
-[What To See?](movies.briandennis.io) helps you choose which movie in theaters you should go see. 
+[What To See?](http://movies.briandennis.io) helps you choose which movie in theaters you should go see. 
 
 The prediction is made by an artificial neural network which uses movies the user rates as training points. Each movie has several input features including: 
 

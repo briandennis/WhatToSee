@@ -13,4 +13,18 @@ The prediction is made by an artificial neural network which uses movies the use
 * IMDB rating
 * Metacritic score
 
+The users attributed score is the output for the training points. 
+
+##Technology
+
+### Client Side
+
+* [ReactJS](https://facebook.github.io/react/)
+* [Bootstrap](http://getbootstrap.com/)
+* [Brain](https://github.com/harthur/brain)
+
+### Server Side
+
+*[NodeJS](https://nodejs.org/en/)
+*[ExpressJS](http://expressjs.com/)
 

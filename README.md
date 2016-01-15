@@ -30,7 +30,7 @@ The users attributed score is the output for the training points.
 
 ##TODO 
 
-- [X] Write second API to get movies currently out
+- [X] ~~ Write second API to get movies currently out ~~
 - [ ] Submit movies on enter key 
 - [ ] Fade animations
 - [ ] Prevent users from submitting same movie multiple times

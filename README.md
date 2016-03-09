@@ -36,4 +36,5 @@ The users attributed score is the output for the training points.
 - [ ] Submit movies on enter key 
 - [ ] Fade animations
 - [ ] Prevent users from submitting same movie multiple times
+- [ ] Make responsive
 

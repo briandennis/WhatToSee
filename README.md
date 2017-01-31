@@ -2,6 +2,8 @@
 
 <p align="center"><img src="public/images/logo.png" height="150"/></p>
 
+> Unfortunately, Rotten Tomatoes, who previously provided the training data, no longer provides an open API. As such, this application no longer works as intended 🙁
+
 ## About
 
 [What To See?](https://whattosee.herokuapp.com/) helps you choose which movie in theaters you should go see. 
